@@ -12,7 +12,7 @@ public class Main {
                 x = Integer.parseInt(input.nextLine());
                 valid = true;
             } catch (Exception err) {
-                System.out.println("Invalid input.Try again.");
+                System.out.println("Invalid input. Try again.");
                 valid = false;
             }
         }while(!valid);
@@ -36,7 +36,7 @@ public class Main {
                 }
 
                 System.out.println("Hello " + name +
-                        " I am thinking of a number between 1 and 20.\nTake a guess.");
+                        ", I am thinking of a number between 1 and 20.\nTake a guess.");
 
                 Random rnd = new Random();
                 num = rnd.nextInt(20) + 1;
@@ -71,11 +71,13 @@ public class Main {
                         cont = (char)input.nextLine().charAt(0);
                         valid = true;
                     }catch(Exception err){
-                        System.out.println("Invalid input.Try again.");
+                        System.out.println("Invalid input. Try again.");
                         valid = false;
                     }
                 }while(!valid);
                 }
 
+            System.out.println("Thanks for playing.");
+            return;
     }
 }
