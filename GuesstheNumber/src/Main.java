@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Main {
-    public static int tryInt(){
+    public static int tryInt() {
         Scanner input = new Scanner(System.in);
         boolean valid = true;
         int x = 0;
@@ -15,10 +15,10 @@ public class Main {
                 System.out.println("Invalid input. Try again.");
                 valid = false;
             }
-        }while(!valid);
+        } while (!valid);
 
         return x;
-    };
+    }
 
     public static void main(String[] args) {
         char cont = 'y';
@@ -64,7 +64,7 @@ public class Main {
                     System.out.println("You weren't able to guess the number in 6 guesses.");
                 }
 
-                System.out.println("Do you wanna play again?" + "\n(y or n)");
+                System.out.println("Do you wanna play again?" + "\nYes(y)");
 
                 do{
                     try{
