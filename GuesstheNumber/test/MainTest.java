@@ -10,6 +10,14 @@ class MainTest {
 
     @Test
     void tryInt() {
+        Main.test = 1;
+        assertEquals(1,Main.tryInt(),"Nah");
+    }
+
+    @Test
+    void tryChar() {
+        Main.test = 'y';
+        assertEquals('y',Main.tryChar(),"Nah");
     }
 
     @Test

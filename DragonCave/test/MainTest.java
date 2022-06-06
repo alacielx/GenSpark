@@ -13,4 +13,12 @@ class MainTest {
     @AfterEach
     void tearDown() {
     }
+
+    @Test
+    void tryInt() {
+    }
+
+    @Test
+    void testMain() {
+    }
 }
