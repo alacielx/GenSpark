@@ -15,7 +15,6 @@ public class hangman {
         hangman = new ArrayList<>(Arrays.asList("+=======+", "|       |", "|", "|", "|", "|", "------------"));
 
         String randWord = wordGenerator(playStyle);
-        System.out.println(randWord + "\n");
 
         for(int i =0; i<randWord.length();i++) {
             if(!String.valueOf(randWord.charAt(i)).matches("[a-zA-Z]")){
@@ -74,7 +73,6 @@ public class hangman {
         return wordList.get(randNum);
     }
     public static void drawHangman(int score) {
-
         switch (score){
             case 1: hangman.set(2,"|        \uD83D\uDE14");
                 break;
