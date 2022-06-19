@@ -4,7 +4,7 @@ import static java.lang.System.exit;
 public class Main {
     public static void main(String[] args) {
         while(true) {
-            String playStyle = "";
+            String playStyle;
             System.out.println("Play with words or phrases? (Words or Phrases)");
             Scanner input = new Scanner(System.in);
             while(true){
