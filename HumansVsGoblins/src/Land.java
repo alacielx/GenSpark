@@ -30,7 +30,7 @@ public class Land extends HumanVsGoblins {
     }
     public void generateGoblins(){
         goblins = new ArrayList<Goblin>();
-        goblinCount = rand(3, 8);
+        goblinCount = rand(5, 9);
         if(goblinCount > (mapSize / 2) * mapSize)
             goblinCount = (mapSize /2) * mapSize;
 

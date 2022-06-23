@@ -4,11 +4,11 @@ import java.util.concurrent.TimeUnit;
 
 public class HumanVsGoblins {
     static Human player;
-    public static void playGame(int numberOfGoblins){
+    public static void playGame(){
         player = new Human();
 
         player.generateLand();
-        player.generateGoblins(numberOfGoblins);
+        player.generateGoblins();
         player.spawn();
         reloadScreen();
 
@@ -27,7 +27,7 @@ public class HumanVsGoblins {
     public static void playerTurn(){
         player.move(player.tryMove());
         reloadScreen();
-        player.regen(2);
+        player.regen(rand(1,2));
     }
     public static void goblinTurn(){
         for(Goblin x : player.getGoblinList()){

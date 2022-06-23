@@ -2,28 +2,31 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
-class HumanWinPercentage {
+class GoblinKillsBeforeDeath {
     Land game;
     Human player;
     @BeforeEach
     void setUp() {
-        double humanWon = 0;
         int humanAbility = 1;
+        double humanWon=0, goblinsKilled=0;
         for(int i = 0 ; i < 10000; i++) {
-            game = new Land();
             player = new Human();
-
-            player.addAgility(humanAbility-1);
-            game.generateLand();
-            game.generateGoblins(5);
+            humanWon=0;
+            player.generateLand();
+            player.generateGoblins(10);
             player.spawn();
-            game.getGoblinList().get(0).setPos(player.getPos());
-            if(player.testFight() == 'H'){
-                humanWon++;
+           // player.addAgility(1);
+            while(player.getPosChar(player.getPos())=='H' && player.getGoblinCount() > 0){
+                player.getGoblinList().get(0).setPos(player.getPos());
+                player.setPos(player.getPos(),player.testFight());
+                if(player.getPosChar(player.getPos()) == 'H'){
+                    humanWon++;
+                }
             }
+            goblinsKilled += humanWon;
         }
-        System.out.println("Percentage of human winning fight with "
-                + humanAbility + " ability point(s): " + humanWon/100 + "%");
+        System.out.println("Average # of goblins killed before dying: " + goblinsKilled/10000);
+        player.showStats();
     }
 
     @Test

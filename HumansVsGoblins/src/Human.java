@@ -44,20 +44,21 @@ public class Human extends Land{
     }
     public char fight(){
         System.out.println("You enter combat with a goblin...");
-        pause(1000);
-        while(this.getHealth() > 0 && getGoblin(pos).getHealth() > 0){
-            //Agility: Player attack to Goblin attack ratio (agility:1)
-            if((int)(Math.random() * (getAgility() + 1)) + 1 <= getAgility()){
-                getGoblin(pos).damage(this.getStrength());
-                System.out.println("You attack goblin for " + this.getStrength() + " points."
-                + " \uD83D\uDC7A health: " + getGoblin(pos).getHealth());
-                pause(1000);
+        pause(750);
+        while(getHealth() > 0 && getGoblin(pos).getHealth() > 0){
+            //humanHitChance: Player attack ratio (+5% per additional agility point)
+            double humanHitChance = (double)3 / (double)5 + ((getAgility() - 1) * .05), r = Math.random();
+            if(r <= humanHitChance){
+                getGoblin(pos).damage(getStrength());
+                getGoblin(pos).damage(getWeaponDamage());
+                System.out.println("You attack goblin for " + (getStrength() + getWeaponDamage()) + " points."
+                        + " \uD83D\uDC7A health: " + getGoblin(pos).getHealth());
             }else{
-                this.damage(getGoblin(pos).getStrength());
+                damage(getGoblin(pos).getStrength());
                 System.out.println("Goblin attacks you for " + getGoblin(pos).getStrength() + " points."
-                + " \uD83E\uDDD1 health: " + getHealth());
-                pause(1000);
+                        + " \uD83E\uDDD1 health: " + getHealth());
             }
+            pause(750);
         }
         if(getGoblin(pos).getHealth() <= 0){
             deadGoblins.add(getGoblin(pos));
@@ -72,32 +73,33 @@ public class Human extends Land{
             return 'G';
         }
     }
-    public char testFight(){
-        while(this.getHealth() > 0 && getGoblin(pos).getHealth() > 0){
-            //Agility: Player attack to Goblin attack ratio (agility:1)
-            if((int)(Math.random() * (getAgility() + 1)) + 1 <= getAgility()){
-                getGoblin(pos).damage(this.getStrength());
-            }else{
-                this.damage(getGoblin(pos).getStrength());
+    public char testFight() {
+        while (getHealth() > 0 && getGoblin(pos).getHealth() > 0) {
+            //humanHitChance: Player attack ratio (+5% per additional agility point)
+            double humanHitChance = (double) 3 / (double) 5 + ((getAgility() - 1) * .05), r = Math.random();
+            if (r <= humanHitChance) {
+                getGoblin(pos).damage(getStrength());
+                getGoblin(pos).damage(getWeaponDamage());
+            } else {
+                damage(getGoblin(pos).getStrength());
             }
         }
-        if(getGoblin(pos).getHealth() <= 0){
+        if (getGoblin(pos).getHealth() <= 0) {
             deadGoblins.add(getGoblin(pos));
             goblinCount--;
             removeDeadGoblins();
-            generateChest();
             getLoot('G');
             return 'H';
-        }else{
+        } else {
             return 'G';
         }
     }
     public void getLoot(char c){
         if(c == 'G'){
              final Object[][] loot = {
-                    {"\uD83D\uDDE1️ The Stake", strength,5},
-                    {"\uD83D\uDDE1️ Reaper of the Void", strength, 15},
-                    {"\uD83D\uDDE1️ I am become Death", strength, 45}
+                    {"\uD83D\uDDE1️\"The Stake\"", 5},
+                    {"\uD83D\uDDE1️\"Reaper of the Void\"", 15},
+                    {"\uD83D\uDDE1️\"I am become Death\"", 45}
             };
             int lootDrop = 0;
             if((rand(0, 1) == 1) && !inventory.equals(loot[2][0].toString())) {
@@ -110,16 +112,16 @@ public class Human extends Land{
                 }
                 message.add("Goblin dropped some loot: " + loot[lootDrop][0].toString());
                 inventory = loot[lootDrop][0].toString();
-                weaponDamage = (int)loot[lootDrop][2];
-                Array.set(loot[lootDrop][1], 0, 15 + (int) loot[lootDrop][2]);
+                weaponDamage = (int)loot[lootDrop][1];
             }
         }
         if(c == 'C'){
             Object[][] powerUps = {
-                    {"Strength Boost", strength, 10},
-                    {"Agility Boost +3", agility, 3},
-                    {"Health Regen", health, getHealth() + (getHealthMax() / 2) <= getHealthMax() ? getHealthMax() / 2 : getHealthMax()-getHealth()},
-                    {"Health Boost", healthMax, 10}
+                    {"Strength Boost +5", strength, 5},
+                    {"Agility Boost +1", agility, 1},
+                    {"Max-Health Boost +10", healthMax, 10},
+                    {"Health Regen +" + (getHealth() + (getHealthMax() / 2) <= getHealthMax() ? getHealthMax() / 2 : getHealthMax()-getHealth()),
+                            health, getHealth() + (getHealthMax() / 2) <= getHealthMax() ? getHealthMax() / 2 : getHealthMax()-getHealth()}
             };
             int rand =  rand(0,powerUps.length-1);
             message.add("You found a power up: " + powerUps[rand][0]);
@@ -155,10 +157,13 @@ public class Human extends Land{
         }
         return inventory;
     }
+    public int getWeaponDamage(){
+        return weaponDamage;
+    }
     public void showStats(){
         System.out.println("HP: " + getHealth() +"/" + getHealthMax()
                 + " | Strength: " + getStrength() + " | Agility: " + getAgility());
-        System.out.print("Inventory: " + getInventory());
+        System.out.print("Inventory:" + getInventory());
         System.out.println();
     }
     public char tryMove() {

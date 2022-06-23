@@ -5,8 +5,8 @@ class MapGenerationTest {
 
     @BeforeEach
     void setUp() {
-        player.generateLand(10);
-        player.generateGoblins();
+        player.generateLand(2);
+        player.generateGoblins(10);
         player.spawn();
         player.drawLand();
     }
