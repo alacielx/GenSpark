@@ -3,7 +3,11 @@ import java.util.Scanner;
 
 public class Human extends Land{
     private int[] pos;
-    private final int[] healthMax = {100}, health = {100}, strength = {15}, agility = {1};
+    private final int[]
+            healthMax = {100},
+            health = {healthMax[0]},
+            strength = {15},
+            agility = {1};
     private String inventory = "";
     private int weaponDamage =0;
     public void spawn(){
