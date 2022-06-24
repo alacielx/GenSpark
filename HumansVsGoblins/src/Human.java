@@ -1,13 +1,14 @@
-import java.lang.reflect.Array;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Human extends Land{
     private int[] pos;
-    private final int[]
-            healthMax = {100},
-            health = {healthMax[0]},
-            strength = {15},
-            agility = {1};
+    private final HashMap<String, Integer> stats = new HashMap<>(){{
+        put("healthMax",100);
+        put("health", get("healthMax"));
+        put("strength", 15);
+        put("agility",1);
+    }};
     private String inventory = "";
     private int weaponDamage =0;
     public void spawn(){
@@ -121,39 +122,37 @@ public class Human extends Land{
         }
         if(c == 'C'){
             Object[][] powerUps = {
-                    {"Strength Boost +5", strength, 5},
-                    {"Agility Boost +1", agility, 1},
-                    {"Max-Health Boost +10", healthMax, 10},
-                    {"Health Regen +" + (getHealth() + (getHealthMax() / 2) <= getHealthMax() ? getHealthMax() / 2 : getHealthMax()-getHealth()),
-                            health, getHealth() + (getHealthMax() / 2) <= getHealthMax() ? getHealthMax() / 2 : getHealthMax()-getHealth()}
+                    {"Health Regen", "health", getHealth() + (getHealthMax() / 2) <= getHealthMax() ? getHealthMax() / 2 : getHealthMax()-getHealth()},
+                    {"Strength Boost", "strength", 5},
+                    {"Agility Boost", "agility", 1},
+                    {"Max-Health Boost", "healthMax", 10}
             };
             int rand =  rand(0,powerUps.length-1);
-            message.add("You found a power up: " + powerUps[rand][0]);
-            Array.set(powerUps[rand][1],0, (int)Array.get(powerUps[rand][1],0) + (int)powerUps[rand][2]);
+            message.add("You found a power up: " + powerUps[rand][0] + " +" + powerUps[rand][2]);
+            stats.put((String)powerUps[rand][1],stats.get(powerUps[rand][1]) + (int)powerUps[rand][2]);
         }
     }
     public int[] getPos(){
         return pos;
     }
     public int getHealth(){
-        return health[0];
+        return stats.get("health");
     }
     public int getHealthMax(){
-        return healthMax[0];
+        return stats.get("healthMax");
     }
     public int getStrength(){
-        return strength[0];
+        return stats.get("strength");
     }
-    public int getAgility(){return agility[0];}
-    public void addAgility(int agilityPoints){ agility[0] += agilityPoints;}
+    public int getAgility(){return stats.get("agility");}
     public void damage(int damageCounter){
-        health[0] = Math.max(health[0] - damageCounter, 0);
+        stats.put("health",Math.max(stats.get("health") - damageCounter, 0));
     }
     public void regen(int healthPoints){
         if(getHealth() + healthPoints <= getHealthMax())
-            health[0] += healthPoints;
+            stats.put("health",stats.get("health") + healthPoints);
         else
-            health[0] = getHealthMax();
+            stats.put("health",stats.get("healthMax"));
     }
     public String getInventory(){
         if(!inventory.equals("")){
