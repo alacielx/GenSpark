@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.w3.org/2001/XMLSchema"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.example.demo"/>
+
+    <!-- bean definitions here -->
+    <bean id="Address" class="com.example.demo.Address">
+        <constructor-arg name="city" value="Houston"/>
+        <constructor-arg name="state" value="Texas"/>
+        <constructor-arg name="country" value="USA"/>
+        <constructor-arg name="zipcode" value="77028"/>
+    </bean>
+
+    <bean id="Phone1" class="com.example.demo.Phone">
+        <constructor-arg name="mobile" value="832-734-8912"/>
+    </bean>
+    <bean id="Phone2" class="com.example.demo.Phone">
+        <constructor-arg name="mobile" value="713-632-8523"/>
+    </bean>
+    <bean id="Phone3" class="com.example.demo.Phone">
+        <constructor-arg name="mobile" value="281-142-9630"/>
+    </bean>
+<!--    <bean id="PhoneList" class="java.util.ArrayList">-->
+<!--        <constructor-arg>-->
+<!--            <list>-->
+<!--                <ref bean="Phone1" />-->
+<!--                <ref bean="Phone2" />-->
+<!--            </list>-->
+<!--        </constructor-arg>-->
+<!--    </bean>-->
+
+</beans>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.w3.org/2001/XMLSchema"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       xmlns:util2="http://www.springframework.org/schema/util">
+
+    <!-- bean definitions here -->
+    <bean id="Address" class="com.example.demo.Address">
+        <constructor-arg index="0" value="Houston"/>
+        <constructor-arg index="1" value="Texas"/>
+        <constructor-arg index="2" value="USA"/>
+        <constructor-arg index="3" value="77028"/>
+    </bean>
+
+    <bean id="Phone1" class="com.example.demo.Phone">
+        <constructor-arg index="0" value="832-734-8912"/>
+    </bean>
+    <bean id="Phone2" class="com.example.demo.Phone">
+        <constructor-arg index="0" value="713-632-8523"/>
+    </bean>
+    <bean id="PhoneList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="Phone1" />
+                <ref bean="Phone2" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="Student" class="com.example.demo.Student">
+        <constructor-arg index="0" value="Alaciel"/>
+        <constructor-arg index="1" value="12345678"/>
+        <constructor-arg index="2" ref="PhoneList"/>
+        <constructor-arg index="3" ref="Address"/>
+    </bean>
+
+</beans>
