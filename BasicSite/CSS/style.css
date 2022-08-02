@@ -1,0 +1,57 @@
+*{
+    background-color: black;
+    color: rgb(169, 169, 169);
+    margin-top: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    
+    
+}
+
+a{
+    color:rgb(243, 117, 0);
+}
+
+article{
+    text-align: left;
+    color: rgb(169, 169, 169);
+    position: relative;
+    margin: 25px;
+}
+
+header{
+    text-align: center;
+}
+
+table,th,td{
+    font-size: 20px;
+    
+    text-align: left;
+    margin: 0 auto;
+    border:1px solid;
+    width: 500px;
+}
+
+.container{
+    padding: 0;
+    text-align: center;
+    margin: 0;
+    margin-top: 0;
+    padding: 0;
+    border-top: 10px solid rgb(243, 117, 0);   
+}
+
+.credits{
+font-size: 12px;
+text-align: right;
+}
+
+p{
+    font-size: 16px;
+}
+
+nav{
+    margin-top: -15px;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
