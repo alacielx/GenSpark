@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>CrocoFax</h1>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="info.html">Info</a>
+            <a href="care.html">Care</a>
+            <a href="images.html">Images</a>
+            <a href="video.html">Video</a>
+        </nav>
+    </header>
+    <article>
+        <form id="contact_form" action="">
+            Name:<br>
+            <input type="text" id="name"><br><br>
+            Email:<br>
+            <input type="email" id="email"><br><br>
+            Phone Number:<br>
+            <input type="tel" id="phone_number" maxlength="14"><br><br>
+            Message:<br>
+            <textarea name="message" id="message" cols="75" rows="5" maxlength="250"></textarea><br><br>
+            <input id="button" type="button" onclick="send()" value="Submit">
+          </form>
+        <script src="../JS/contact.js">
+
+        </script>
+    </article>
+</body>
+</html>

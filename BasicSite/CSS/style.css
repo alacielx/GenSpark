@@ -46,6 +46,40 @@ font-size: 12px;
 text-align: right;
 }
 
+.contact{
+    text-align: center;
+}
+button {
+    border-color: white;
+    background-color: rgb(243, 117, 0);
+    color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    width: 100px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+form{
+    text-align: center;
+}
+input,textarea{    
+    border-color: white;
+    background-color: rgb(243, 117, 0);
+    color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    width: 200px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    resize: none;
+}
+textarea#message{
+    width: 500px;
+}
+
 p{
     font-size: 16px;
 }
