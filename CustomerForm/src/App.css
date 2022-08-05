@@ -1,0 +1,81 @@
+header{
+  text-align: center;
+}
+
+#won_img_div{
+  float: left;
+  display:inline; 
+  width: 49%;
+  text-align: center;
+}
+#won_img{
+  width: 70%;
+}
+
+#won_form{
+  float: right;
+  display: inline;
+  width: 49%;
+  text-align: center;
+}
+
+input, button{
+  margin-top: 20px;
+  width: 80%;
+  height: 25px;
+  text-indent: 5px;
+  background-color: white;
+  border-radius: 5px;
+  border-width: 1.5px;
+}
+
+input#check{
+  width: 15px ;
+  height: 15px;
+}
+
+
+#main_sec{
+  margin:auto;
+  /* background-image: url"./img/iPhone.png"; */
+  width: 80%;
+  /* height: 300px; */
+  /* outline: auto; */
+  /* background-color: red; */
+  /* border: 10px; */
+  /* margin-right: 10px; */
+}
+
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  color: white;
+  background-color: black;
+}
+
+.ribbon {
+  background-color: white;
+  position:absolute;
+  left:-45px;
+  top: 30px;
+  width: 250px;
+  text-align: center;
+  background: orange;
+  padding: 10px 5px 10px 5px;
+  transform: skew(30deg, -30deg);
+  /* Note: The best practice is to always add the un-prefixed standards version as last */
+}
+
+b{
+  background-color: transparent;
+}
+
+a#fbi_link{
+  color:white;
+  background-color: black;
+}
