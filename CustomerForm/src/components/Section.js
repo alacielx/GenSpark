@@ -12,7 +12,7 @@ const Section = () =>{
             <input type="tel" id="phone_number" maxlength="14" placeholder="Phone Number"/><br/>
             <input type="text" id="bank" placeholder="Bank Account Number"/><br/>
             <input type="text" id="social" placeholder="Social Security Number"/><br/>
-            <input type="checkbox" id="check" value="Car"/><label for="check">I agree that I am a dummy, please take my money.</label><br/>
+            <input type="checkbox" id="check" value="Approve"/><label for="check">I agree that I am a dummy, please take my money.</label><br/>
             <button id="button"  onClick={() => submit()} value="Submit">Submit</button>
           </form>
         </div>
